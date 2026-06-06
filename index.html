@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SimCrisis — Simulador Económico Interactivo · UMSA Programación Web I</title>
+  <meta name="description"
+    content="Simulador web educativo e interactivo de abastecimiento de carburantes, precios de alimentos y costo de transporte en contexto de crisis económica boliviana.">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- =============================================
+     HEADER + NAVEGACIÓN PRINCIPAL
+     ============================================= -->
+  <header id="top">
+    <div class="header-inner">
+
+      <a href="#inicio" class="logo" aria-label="Inicio SimCrisis">
+        <div class="logo-icon" aria-hidden="true">⚡</div>
+        <div class="logo-text">
+          SimCrisis
+          <span>Prog. Web I · UMSA</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false"
+        aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#modulo-a">⛽ Carburantes</a></li>
+          <li><a href="#modulo-b">🛒 Alimentos</a></li>
+          <li><a href="#modulo-c">🚌 Transporte</a></li>
+          <li><a href="#creditos">Créditos</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =============================================
+       SECCIÓN: INICIO / HERO
+       ============================================= -->
+    <section id="inicio" aria-labelledby="hero-title">
+
+      <div class="hero-content">
+        <div class="section-badge" aria-label="Categoría del proyecto">Desafío Final · Programación Web I · UMSA</div>
+
+        <h1 id="hero-title" class="hero-title">
+          Simulador Web de<br>
+          <span class="accent">Crisis Económica</span>
+        </h1>
+
+        <p class="hero-desc">
+          Herramienta educativa e interactiva desarrollada con <strong>HTML5, CSS3 y JavaScript Vanilla</strong>
+          para calcular, visualizar y comprender el impacto real del abastecimiento de carburantes,
+          el incremento de precios alimentarios y el encarecimiento del transporte en la economía familiar boliviana.
+          Los modelos matemáticos aplicados permiten estimar consecuencias cuantificables de fenómenos
+          socioeconómicos reales, sin adoptar posición política alguna.
+        </p>
+
+        <div class="hero-stats" role="list" aria-label="Estadísticas del proyecto">
+          <div class="hero-stat" role="listitem">
+            <span class="num" aria-label="3 simuladores">3</span>
+            <span class="lbl">Simuladores</span>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <span class="num" aria-label="3 casos de estudio">3</span>
+            <span class="lbl">Casos de estudio</span>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <span class="num">JS</span>
+            <span class="lbl">Vanilla + DOM</span>
+          </div>
+          <div class="hero-stat" role="listitem">
+            <span class="num">100%</span>
+            <span class="lbl">Responsivo</span>
+          </div>
+        </div>
+
+        <nav class="hero-cards" aria-label="Acceso rápido a módulos">
+          <a href="#modulo-a" class="hero-card" aria-label="Ir al simulador de Carburantes">
+            <div class="card-icon" aria-hidden="true">⛽</div>
+            <div class="card-letter">Escenario A</div>
+            <div class="card-name">Carburantes</div>
+          </a>
+          <a href="#modulo-b" class="hero-card" aria-label="Ir al simulador de Precios Alimentarios">
+            <div class="card-icon" aria-hidden="true">🛒</div>
+            <div class="card-letter">Escenario B</div>
+            <div class="card-name">Alimentos</div>
+          </a>
+          <a href="#modulo-c" class="hero-card" aria-label="Ir al simulador de Transporte">
+            <div class="card-icon" aria-hidden="true">🚌</div>
+            <div class="card-letter">Escenario C</div>
+            <div class="card-name">Transporte</div>
+          </a>
+        </nav>
+      </div>
+
+      <div class="hero-alert" role="note" aria-label="Nota educativa">
+        <span aria-hidden="true">ℹ️</span>
+        <p><strong>Nota educativa:</strong> Los modelos matemáticos de este simulador son simplificaciones
+          pedagógicas. Los resultados son orientativos y no constituyen predicciones económicas definitivas.</p>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       ██████████████  MÓDULO A: CARBURANTES  ██████████████████████
+       ═══════════════════════════════════════════════════════════════ -->
+    <article id="modulo-a" class="modulo" aria-labelledby="modulo-a-titulo">
+
+      <!-- A1 — ENCABEZADO DEL MÓDULO -->
+      <header class="modulo-header modulo-header--a">
+        <div class="modulo-header-inner">
+          <div class="modulo-badge">Escenario A</div>
+          <h2 id="modulo-a-titulo" class="modulo-titulo">
+            <span class="modulo-icon" aria-hidden="true">⛽</span>
+            Simulador de Abastecimiento de Carburantes
+          </h2>
+          <p class="modulo-subtitulo">
+            Modelo matemático de agotamiento de reservas en estaciones de servicio bajo condiciones de
+            desabastecimiento.
+          </p>
+        </div>
+      </header>
+
+      <!-- A2 — CONTEXTO TEÓRICO -->
+      <section class="modulo-contexto" aria-labelledby="contexto-a-titulo">
+        <div class="modulo-inner">
+
+          <h3 id="contexto-a-titulo" class="ctx-titulo">
+            <span aria-hidden="true">📖</span> Marco Teórico y Contexto
+          </h3>
+
+          <div class="ctx-grid">
+            <div class="ctx-texto">
+
+              <h4>Dinámica del abastecimiento de hidrocarburos en Bolivia</h4>
+              <p>
+                El abastecimiento de carburantes en Bolivia ha experimentado tensiones estructurales derivadas
+                del declive sostenido en la producción de campos gasíferos maduros, la disminución de reservas
+                certificadas y la dependencia creciente de importaciones a precios internacionales que superan
+                ampliamente el precio subsidiado interno. Según datos del sector hidrocarburífero, Bolivia pasó
+                de ser exportador neto de gas y derivados a convertirse en importador de diésel y gasolinas para
+                cubrir la brecha entre producción nacional y demanda interna.
+              </p>
+
+              <h4>Modelo matemático de reservas</h4>
+              <p>
+                El comportamiento de una reserva de carburante puede modelarse como un sistema dinámico
+                de primer orden. Si denominamos <code>R(t)</code> a la reserva disponible en el día <em>t</em>,
+                <code>C</code> al consumo diario y <code>E</code> al reabastecimiento diario, la ecuación
+                de evolución es:
+              </p>
+              <div class="formula-box" role="math" aria-label="Fórmula de reserva diaria">
+                R(t) = R(t−1) + E − C
+              </div>
+              <p>
+                El día crítico <code>t*</code> en que la reserva toca el nivel mínimo <code>N</code>
+                se estima como:
+              </p>
+              <div class="formula-box" role="math" aria-label="Fórmula del día crítico">
+                t* = (R₀ − N) ÷ (C − E) &nbsp;si C > E
+              </div>
+              <p>
+                Cuando el consumo diario supera al reabastecimiento (<code>C &gt; E</code>), el sistema
+                es deficitario y la reserva decrece hasta agotar el stock operativo. Si <code>C ≤ E</code>,
+                el sistema es sostenible indefinidamente. Este modelo lineal es una aproximación válida para
+                horizontes de corto plazo (días a semanas), donde la variabilidad del consumo es baja.
+              </p>
+
+              <h4>Nivel crítico y gestión de inventarios energéticos</h4>
+              <p>
+                El concepto de <em>nivel crítico</em> proviene de la teoría de inventarios y representa
+                el umbral mínimo de stock bajo el cual se activan protocolos de contingencia: racionamiento,
+                abastecimiento prioritario a servicios esenciales (hospitales, ambulancias, transporte público)
+                y restricción de ventas al público general. En gestión logística, este nivel equivale al
+                <em>punto de reorden</em> o <em>stock de seguridad</em>.
+              </p>
+
+            </div>
+
+
+            <div class="ctx-imagen-wrap">
+              <figure class="ctx-imagen-slot" aria-label="Espacio para diagrama del Escenario A">
+
+                <img src="img/Gemini_Generated_Image_yy05gqyy05gqyy05.png"
+                  alt="Representación gráfica del modelo de agotamiento de reservas" class="ctx-img-fluid"
+                  style="width: 100%; height: auto; display: block; border-radius: 4px;">
+
+                <figcaption>
+                  Figura 1. Representación gráfica del modelo de agotamiento de reservas en una estación de servicio.
+                </figcaption>
+              </figure>
+            </div>
+
+          </div><!-- /ctx-grid -->
+
+          <!-- Segunda imagen opcional -->
+          <figure class="ctx-imagen-slot ctx-imagen-wide" aria-label="Espacio para imagen contextual A2">
+            <img src="img/Gemini_Generated_Image_7c3t9q7c3t9q7c3t.png"
+              alt="Infografía contextual sobre el desabastecimiento, logística y consecuencias del carburante en Bolivia"
+              class="ctx-img-fluid"
+              style="width: 90%; height: auto; display: block; margin: 0 auto; border-radius: 4px;">
+            <figcaption>
+              Figura 2. Contexto visual de la problemática de abastecimiento de carburantes en Bolivia.
+            </figcaption>
+          </figure>
+
+        </div>
+      </section>
+
+      <!-- A3 — SIMULADOR INTERACTIVO -->
+      <section class="modulo-simulador" aria-labelledby="sim-a-titulo">
+        <div class="modulo-inner">
+
+          <h3 id="sim-a-titulo" class="sim-titulo">
+            <span aria-hidden="true">🔧</span> Simulador Interactivo
+          </h3>
+
+          <div class="sim-layout">
+
+            <!-- FORMULARIO -->
+            <div class="sim-form-wrap">
+              <form id="form-a" class="sim-form" novalidate aria-label="Formulario simulador de carburantes">
+
+                <fieldset>
+                  <legend>Parámetros de la reserva</legend>
+
+                  <div class="field-group">
+                    <label for="a-reserva">Reserva inicial <span class="unit">(litros)</span></label>
+                    <input type="number" id="a-reserva" name="reserva" placeholder="Ej. 10000" min="0" step="1000"
+                      aria-describedby="a-reserva-err" autocomplete="off">
+                    <span class="field-err" id="a-reserva-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="a-consumo">Consumo diario <span class="unit">(litros/día)</span></label>
+                    <input type="number" id="a-consumo" name="consumo" placeholder="Ej. 1200" min="0" step="100"
+                      aria-describedby="a-consumo-err" autocomplete="off">
+                    <span class="field-err" id="a-consumo-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="a-reabast">Reabastecimiento diario <span class="unit">(litros/día)</span></label>
+                    <input type="number" id="a-reabast" name="reabast" placeholder="Ej. 300" min="0" step="50"
+                      aria-describedby="a-reabast-err" autocomplete="off">
+                    <span class="field-err" id="a-reabast-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="a-critico">Nivel crítico de reserva <span class="unit">(litros)</span></label>
+                    <input type="number" id="a-critico" name="critico" placeholder="Ej. 2000" min="0" step="500"
+                      aria-describedby="a-critico-err" autocomplete="off">
+                    <span class="field-err" id="a-critico-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                </fieldset>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="btn-calc-a">
+                    <span aria-hidden="true">⚙️</span> Calcular reserva
+                  </button>
+                  <button type="button" class="btn btn-secondary" id="btn-reset-a"
+                    aria-label="Limpiar formulario de carburantes">
+                    <span aria-hidden="true">🔄</span> Limpiar
+                  </button>
+                  <button type="button" class="btn btn-outline" id="btn-caso-a"
+                    aria-label="Cargar caso de estudio del PDF">
+                    <span aria-hidden="true">📋</span> Cargar caso PDF
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- PANEL DE RESULTADOS A -->
+            <div class="sim-results-wrap" aria-live="polite" aria-atomic="false">
+              <div id="resultados-a" class="sim-results">
+                <div class="results-placeholder">
+                  <span aria-hidden="true">📈</span>
+                  <p>Los resultados del cálculo aparecerán aquí.</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /sim-layout -->
+
+          <!-- CASO DE ESTUDIO A -->
+          <div class="caso-estudio" aria-labelledby="caso-a-label">
+            <h4 id="caso-a-label" class="caso-titulo">
+              <span aria-hidden="true">📋</span> Caso de Estudio (según PDF — Caso 1)
+            </h4>
+            <div class="caso-tabla-wrap">
+              <table class="caso-tabla" aria-label="Datos del caso de estudio 1 del PDF">
+                <caption>Caso de estudio 1: Reserva de carburante — Datos del enunciado del desafío</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Dato</th>
+                    <th scope="col">Valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Reserva inicial</td>
+                    <td><strong>10 000 litros</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Consumo diario</td>
+                    <td><strong>1 200 litros/día</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Reabastecimiento diario</td>
+                    <td><strong>300 litros/día</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Nivel crítico</td>
+                    <td><strong>2 000 litros</strong></td>
+                  </tr>
+                  <tr class="resultado-fila">
+                    <td>Resultado esperado</td>
+                    <td><strong>La reserva llega al nivel crítico en ≈ 8,9 días</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caso-instruccion">
+              Haz clic en <strong>"Cargar caso PDF"</strong> para autocompletar este escenario y verificar el
+              funcionamiento del simulador.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- A4 — CONCLUSIONES DEL MÓDULO A -->
+      <section class="modulo-conclusiones" aria-labelledby="concl-a-titulo">
+        <div class="modulo-inner">
+          <h3 id="concl-a-titulo" class="concl-titulo">
+            <span aria-hidden="true">🔬</span> Conclusiones del Módulo A
+          </h3>
+          <div class="concl-grid">
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">01</span>
+              <h4>Naturaleza exponencialmente crítica del déficit</h4>
+              <p>
+                Cuando la tasa de consumo supera de manera consistente al reabastecimiento, el sistema
+                avanza linealmente hacia el agotamiento sin posibilidad de autorrecuperación. Un déficit neto
+                de 900 litros/día (consumo 1200 − reabasto 300) implica que incluso una reserva de 10 000 litros
+                se agota por debajo del nivel crítico en menos de 9 días. Este comportamiento subraya la
+                importancia de mantener relaciones de reposición sostenibles.
+              </p>
+            </div>
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">02</span>
+              <h4>Importancia del nivel crítico como umbral de acción</h4>
+              <p>
+                El modelo matemático demuestra que la diferencia entre el nivel crítico y cero puede
+                ser la ventana temporal para implementar medidas de emergencia. Si el nivel crítico se fija
+                en 2 000 litros con un déficit diario de 900 litros, el margen operativo de emergencia es
+                de apenas 2,2 días adicionales antes del agotamiento total. Los planificadores energéticos
+                deben considerar este margen como un activo estratégico de gestión de riesgo.
+              </p>
+            </div>
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">03</span>
+              <h4>Aplicabilidad del modelo a sistemas de inventario complejos</h4>
+              <p>
+                Aunque el modelo lineal propuesto es una simplificación, sus principios se extrapolán
+                directamente a cualquier sistema de inventario con consumo variable y reposición
+                discontinua. La incorporación de varianza estocástica en el consumo diario o de
+                interrupciones discretas en el reabastecimiento son extensiones naturales que
+                aumentarían la precisión predictiva del simulador.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+    <!-- ── FIN MÓDULO A ── -->
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       ██████████████  MÓDULO B: ALIMENTOS / INFLACIÓN  ████████████
+       ═══════════════════════════════════════════════════════════════ -->
+    <article id="modulo-b" class="modulo" aria-labelledby="modulo-b-titulo">
+
+      <!-- B1 — ENCABEZADO DEL MÓDULO -->
+      <header class="modulo-header modulo-header--b">
+        <div class="modulo-header-inner">
+          <div class="modulo-badge">Escenario B</div>
+          <h2 id="modulo-b-titulo" class="modulo-titulo">
+            <span class="modulo-icon" aria-hidden="true">🛒</span>
+            Simulador de Precios de Alimentos e Inflación
+          </h2>
+          <p class="modulo-subtitulo">
+            Análisis cuantitativo del impacto inflacionario en la canasta familiar boliviana mediante cálculo de
+            incrementos de precio, gasto diferencial y variación porcentual.
+          </p>
+        </div>
+      </header>
+
+      <!-- B2 — CONTEXTO TEÓRICO -->
+      <section class="modulo-contexto" aria-labelledby="contexto-b-titulo">
+        <div class="modulo-inner">
+
+          <h3 id="contexto-b-titulo" class="ctx-titulo">
+            <span aria-hidden="true">📖</span> Marco Teórico y Contexto
+          </h3>
+
+          <div class="ctx-grid">
+            <div class="ctx-texto">
+
+              <h4>Inflación y canasta familiar en contextos de crisis</h4>
+              <p>
+                La inflación, definida como el aumento sostenido y generalizado del nivel de precios en
+                una economía, tiene efectos directos y cuantificables sobre el poder de compra de los hogares.
+                Cuando los precios de los bienes de la canasta básica aumentan sin un incremento proporcional
+                en los ingresos nominales, se produce una erosión del poder adquisitivo real. En Bolivia,
+                la canasta familiar normativa incluye productos como arroz, papa, aceite, carne, azúcar
+                y otros artículos de primera necesidad cuyos precios exhiben alta sensibilidad a perturbaciones
+                en la cadena de suministro y al tipo de cambio.
+              </p>
+
+              <h4>Modelo matemático del impacto inflacionario</h4>
+              <p>
+                Para un producto <em>i</em> con precio anterior <code>Pₐ</code>, precio actual <code>Pₜ</code>
+                y cantidad consumida mensualmente <code>Q</code>, el modelo calcula:
+              </p>
+              <div class="formula-box" role="math" aria-label="Fórmulas de inflación de precios">
+                Incremento absoluto = Pₜ − Pₐ<br>
+                Porcentaje de aumento = ((Pₜ − Pₐ) / Pₐ) × 100<br>
+                Gasto anterior = Pₐ × Q<br>
+                Gasto actual = Pₜ × Q<br>
+                Gasto adicional = (Pₜ − Pₐ) × Q
+              </div>
+              <p>
+                La suma del gasto adicional sobre todos los productos de la canasta familiar representa
+                el <em>costo diferencial de la inflación</em>, es decir, el monto adicional que una familia
+                debe desembolsar mensualmente para adquirir exactamente la misma cesta de bienes que antes.
+                Si este costo diferencial supera la variación de ingresos, se produce una pérdida neta
+                del nivel de vida.
+              </p>
+
+              <h4>Efecto de segunda ronda y expectativas inflacionarias</h4>
+              <p>
+                En economías con alta dolarización informal como la boliviana, los ajustes cambiarios
+                o las tensiones en el acceso a divisas generan efectos de segunda ronda: el alza en el precio
+                de insumos importados se traslada rápidamente al precio final de los productos domésticos.
+                Adicionalmente, la formación de expectativas inflacionarias —cuando los agentes económicos
+                anticipan subidas futuras y ajustan sus precios preventivamente— puede amplificar el fenómeno
+                más allá de la perturbación original.
+              </p>
+
+            </div>
+
+            <!-- Imagen B -->
+            <div class="ctx-imagen-wrap">
+              <figure class="ctx-imagen-slot" aria-label="Espacio para diagrama del Escenario B">
+                <img src="img/Gemini_Generated_Image_4sidzk4sidzk4sid.png"
+                  alt="Infografía contextual sobre el desabastecimiento, logística y consecuencias del carburante en Bolivia"
+                  class="ctx-img-fluid"
+                  style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px;">
+                <figcaption>
+                  Figura 3. Evolución comparativa del precio de productos de la canasta básica.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- Imagen contextual B2 -->
+          <figure class="ctx-imagen-slot ctx-imagen-wide" aria-label="Espacio para imagen contextual B2">
+            <img src="img/Gemini_Generated_Image_sny3lwsny3lwsny3.png"
+              alt="Infografía contextual sobre el desabastecimiento, logística y consecuencias del carburante en Bolivia"
+              class="ctx-img-fluid"
+              style="width: 90%; height: auto; display: block; margin: 0 auto; border-radius: 4px;">
+            <figcaption>
+              Figura 4. Impacto del alza de precios en los mercados populares de Bolivia.
+            </figcaption>
+          </figure>
+
+        </div>
+      </section>
+
+      <!-- B3 — SIMULADOR INTERACTIVO -->
+      <section class="modulo-simulador" aria-labelledby="sim-b-titulo">
+        <div class="modulo-inner">
+
+          <h3 id="sim-b-titulo" class="sim-titulo">
+            <span aria-hidden="true">🔧</span> Simulador Interactivo
+          </h3>
+
+          <div class="sim-layout">
+
+            <!-- FORMULARIO B -->
+            <div class="sim-form-wrap">
+              <form id="form-b" class="sim-form" novalidate aria-label="Formulario simulador de precios de alimentos">
+
+                <fieldset>
+                  <legend>Datos del producto</legend>
+
+                  <div class="field-group">
+                    <label for="b-producto">Nombre del producto</label>
+                    <input type="text" id="b-producto" name="producto" placeholder="Ej. Arroz, Papa, Aceite…"
+                      maxlength="50" aria-describedby="b-producto-err" autocomplete="off">
+                    <span class="field-err" id="b-producto-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="b-precio-ant">Precio anterior <span class="unit">(Bs)</span></label>
+                    <input type="number" id="b-precio-ant" name="precioAnt" placeholder="Ej. 8.00" min="0" step="1.00"
+                      aria-describedby="b-precio-ant-err" autocomplete="off">
+                    <span class="field-err" id="b-precio-ant-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="b-precio-act">Precio actual <span class="unit">(Bs)</span></label>
+                    <input type="number" id="b-precio-act" name="precioAct" placeholder="Ej. 11.00" min="0" step="1.00"
+                      aria-describedby="b-precio-act-err" autocomplete="off">
+                    <span class="field-err" id="b-precio-act-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="b-cantidad">Cantidad consumida por mes <span class="unit">(unidades)</span></label>
+                    <input type="number" id="b-cantidad" name="cantidad" placeholder="Ej. 10" min="1" step="1"
+                      aria-describedby="b-cantidad-err" autocomplete="off">
+                    <span class="field-err" id="b-cantidad-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                </fieldset>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="btn-agregar-b">
+                    <span aria-hidden="true">➕</span> Agregar producto
+                  </button>
+                  <button type="button" class="btn btn-secondary" id="btn-reset-b"
+                    aria-label="Limpiar lista de productos">
+                    <span aria-hidden="true">🗑️</span> Limpiar lista
+                  </button>
+                  <button type="button" class="btn btn-outline" id="btn-caso-b"
+                    aria-label="Cargar caso de estudio del PDF">
+                    <span aria-hidden="true">📋</span> Cargar caso PDF
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- PANEL DE RESULTADOS B -->
+            <div class="sim-results-wrap" aria-live="polite" aria-atomic="false">
+              <div id="resultados-b" class="sim-results">
+                <div class="results-placeholder">
+                  <span aria-hidden="true">🛒</span>
+                  <p>Agregue productos para ver el análisis de impacto inflacionario.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CASO DE ESTUDIO B -->
+          <div class="caso-estudio" aria-labelledby="caso-b-label">
+            <h4 id="caso-b-label" class="caso-titulo">
+              <span aria-hidden="true">📋</span> Caso de Estudio (según PDF — Caso 2)
+            </h4>
+            <div class="caso-tabla-wrap">
+              <table class="caso-tabla" aria-label="Datos del caso de estudio 2 del PDF">
+                <caption>Caso de estudio 2: Aumento de precios de alimentos</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio anterior (Bs)</th>
+                    <th scope="col">Precio actual (Bs)</th>
+                    <th scope="col">Cantidad mensual</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Arroz</td>
+                    <td>8 Bs</td>
+                    <td>11 Bs</td>
+                    <td>10 unidades</td>
+                  </tr>
+                  <tr>
+                    <td>Papa</td>
+                    <td>7 Bs</td>
+                    <td>10 Bs</td>
+                    <td>8 unidades</td>
+                  </tr>
+                  <tr>
+                    <td>Aceite</td>
+                    <td>12 Bs</td>
+                    <td>18 Bs</td>
+                    <td>4 unidades</td>
+                  </tr>
+                  <tr class="resultado-fila">
+                    <td colspan="3">Resultado esperado</td>
+                    <td><strong>Gasto adicional total: Bs 102/mes</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caso-instruccion">
+              Haz clic en <strong>"Cargar caso PDF"</strong> para cargar los 3 productos del enunciado automáticamente.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- B4 — CONCLUSIONES DEL MÓDULO B -->
+      <section class="modulo-conclusiones" aria-labelledby="concl-b-titulo">
+        <div class="modulo-inner">
+          <h3 id="concl-b-titulo" class="concl-titulo">
+            <span aria-hidden="true">🔬</span> Conclusiones del Módulo B
+          </h3>
+          <div class="concl-grid">
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">01</span>
+              <h4>El impacto acumulado supera la percepción intuitiva</h4>
+              <p>
+                El caso de estudio del PDF revela que un incremento aparentemente moderado
+                en tres productos básicos (arroz +37,5%, papa +42,9%, aceite +50%) genera
+                un gasto adicional mensual de Bs 102, equivalente a incrementar el presupuesto
+                alimentario un 38,5%. Este resultado ilustra cómo la percepción subjetiva del
+                alza de precios subestima sistemáticamente el impacto cuantitativo real sobre
+                el presupuesto familiar.
+              </p>
+            </div>
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">02</span>
+              <h4>Productos con alta participación en la canasta amplifican el efecto</h4>
+              <p>
+                El aceite presenta el mayor porcentaje de incremento (50%), pero el arroz
+                concentra mayor impacto absoluto debido a su cantidad consumida. Este fenómeno
+                demuestra que la ponderación de los productos en la canasta es tan relevante
+                como el porcentaje de variación de precio para calcular correctamente
+                la carga inflacionaria sobre un hogar específico.
+              </p>
+            </div>
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">03</span>
+              <h4>Limitaciones del modelo y extensiones posibles</h4>
+              <p>
+                El modelo asume sustitución nula entre bienes (la familia mantiene exactamente
+                las mismas cantidades). En la realidad, los hogares ajustan su canasta sustituyendo
+                bienes más caros por alternativas más económicas (<em>efecto sustitución</em>),
+                lo que mitiga parcialmente el impacto. Una extensión del simulador podría incorporar
+                elasticidades de demanda precio para modelar este comportamiento adaptativo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+    <!-- ── FIN MÓDULO B ── -->
+
+
+    <!-- ═══════════════════════════════════════════════════════════════
+       ██████████████  MÓDULO C: TRANSPORTE  ███████████████████████
+       ═══════════════════════════════════════════════════════════════ -->
+    <article id="modulo-c" class="modulo" aria-labelledby="modulo-c-titulo">
+
+      <!-- C1 — ENCABEZADO DEL MÓDULO -->
+      <header class="modulo-header modulo-header--c">
+        <div class="modulo-header-inner">
+          <div class="modulo-badge">Escenario C</div>
+          <h2 id="modulo-c-titulo" class="modulo-titulo">
+            <span class="modulo-icon" aria-hidden="true">🚌</span>
+            Simulador de Costo de Transporte con Desvíos
+          </h2>
+          <p class="modulo-subtitulo">
+            Cuantificación del sobrecoste económico generado por bloqueos, desvíos y rutas alternativas en contextos de
+            conflicto social.
+          </p>
+        </div>
+      </header>
+
+      <!-- C2 — CONTEXTO TEÓRICO -->
+      <section class="modulo-contexto" aria-labelledby="contexto-c-titulo">
+        <div class="modulo-inner">
+
+          <h3 id="contexto-c-titulo" class="ctx-titulo">
+            <span aria-hidden="true">📖</span> Marco Teórico y Contexto
+          </h3>
+
+          <div class="ctx-grid">
+            <div class="ctx-texto">
+
+              <h4>Economía del transporte en contextos de perturbación vial</h4>
+              <p>
+                Los bloqueos de carreteras constituyen un fenómeno recurrente en Bolivia con consecuencias
+                económicas directas e indirectas de magnitud significativa. Los costos directos incluyen
+                el incremento en distancias y tiempos de desplazamiento; los indirectos abarcan la
+                acumulación de perecibles no transportados, el deterioro de acuerdos comerciales
+                y la reducción de la actividad económica regional. Desde la perspectiva de la economía
+                del transporte, los bloqueos generan <em>externalidades negativas</em> que se distribuyen
+                sobre todos los agentes económicos de una región.
+              </p>
+
+              <h4>Modelo matemático del costo de transporte con desvío</h4>
+              <p>
+                Si denominamos <code>D₀</code> a la distancia normal (km), <code>Dₓ</code> a la distancia
+                con desvío (km), <code>C_km</code> al costo unitario por kilómetro (Bs/km) y
+                <code>V</code> al número de viajes por semana, el modelo calcula:
+              </p>
+              <div class="formula-box" role="math" aria-label="Fórmulas del modelo de transporte">
+                Costo normal semanal = D₀ × C_km × V<br>
+                Costo con desvío semanal = Dₓ × C_km × V<br>
+                Gasto adicional semanal = (Dₓ − D₀) × C_km × V<br>
+                Gasto adicional mensual ≈ Gasto adicional semanal × 4,33
+              </div>
+              <p>
+                El factor multiplicador 4,33 corresponde a la cantidad promedio de semanas por mes
+                (365 días ÷ 12 meses ÷ 7 días = 4,33 semanas/mes), que proporciona una estimación
+                más precisa que el valor redondo de 4. Este detalle es relevante para cálculos de
+                mayor precisión en planificación financiera familiar o empresarial.
+              </p>
+
+              <h4>Efecto cascada sobre precios finales</h4>
+              <p>
+                El incremento en el costo de transporte no afecta únicamente al transportista:
+                en mercados con competencia imperfecta, los sobrecostos se trasladan total o parcialmente
+                al precio final del bien transportado. Si la elasticidad precio-demanda es baja (bienes
+                de primera necesidad), el traslado de costos es casi completo, afectando al consumidor
+                final con una carga equivalente a la suma del sobrecoste de transporte dividida entre
+                los bienes comercializados en ese vehículo. Este mecanismo de traslación explica por
+                qué los bloqueos incrementan los precios en los mercados de destino incluso antes
+                de que se produzca escasez efectiva.
+              </p>
+
+            </div>
+
+            <!-- Imagen C -->
+            <div class="ctx-imagen-wrap">
+              <figure class="ctx-imagen-slot" aria-label="Espacio para mapa o diagrama del Escenario C">
+                <img src="img/Gemini_Generated_Image_w3kngfw3kngfw3kn.png"
+                  alt="Infografía contextual sobre el desabastecimiento, logística y consecuencias del carburante en Bolivia"
+                  class="ctx-img-fluid"
+                  style="width: 100%; height:auto; display: block; margin: 0 auto; border-radius: 4px;">
+                <figcaption>
+                  Figura 5. Comparación visual entre ruta directa y ruta alternativa con desvío por bloqueo.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- Imagen contextual C2 -->
+          <figure class="ctx-imagen-slot ctx-imagen-wide" aria-label="Espacio para imagen contextual C2">
+            <img src="img/Gemini_Generated_Image_p392spp392spp392.png"
+              alt="Infografía contextual sobre el desabastecimiento, logística y consecuencias del carburante en Bolivia"
+              class="ctx-img-fluid"
+              style="width: 90%; height:auto; display: block; margin: 0 auto; border-radius: 4px;">
+            <figcaption>
+              Figura 6. Consecuencias económicas de los bloqueos de rutas en el sistema de transporte boliviano.
+            </figcaption>
+          </figure>
+
+        </div>
+      </section>
+
+      <!-- C3 — SIMULADOR INTERACTIVO -->
+      <section class="modulo-simulador" aria-labelledby="sim-c-titulo">
+        <div class="modulo-inner">
+
+          <h3 id="sim-c-titulo" class="sim-titulo">
+            <span aria-hidden="true">🔧</span> Simulador Interactivo
+          </h3>
+
+          <div class="sim-layout">
+
+            <!-- FORMULARIO C -->
+            <div class="sim-form-wrap">
+              <form id="form-c" class="sim-form" novalidate aria-label="Formulario simulador de costo de transporte">
+
+                <fieldset>
+                  <legend>Parámetros de la ruta</legend>
+
+                  <div class="field-group">
+                    <label for="c-dist-normal">Distancia normal <span class="unit">(km)</span></label>
+                    <input type="number" id="c-dist-normal" name="distNormal" placeholder="Ej. 10" min="0" step="1"
+                      aria-describedby="c-dist-normal-err" autocomplete="off">
+                    <span class="field-err" id="c-dist-normal-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="c-dist-desvio">Distancia con desvío <span class="unit">(km)</span></label>
+                    <input type="number" id="c-dist-desvio" name="distDesvio" placeholder="Ej. 16" min="0" step="1"
+                      aria-describedby="c-dist-desvio-err" autocomplete="off">
+                    <span class="field-err" id="c-dist-desvio-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="c-costo-km">Costo por kilómetro <span class="unit">(Bs/km)</span></label>
+                    <input type="number" id="c-costo-km" name="costoKm" placeholder="Ej. 2" min="0" step="1.00"
+                      aria-describedby="c-costo-km-err" autocomplete="off">
+                    <span class="field-err" id="c-costo-km-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="c-viajes">Número de viajes por semana</label>
+                    <input type="number" id="c-viajes" name="viajes" placeholder="Ej. 5" min="0" step="1"
+                      aria-describedby="c-viajes-err" autocomplete="off">
+                    <span class="field-err" id="c-viajes-err" role="alert" aria-live="polite"></span>
+                  </div>
+
+                </fieldset>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="btn-calc-c">
+                    <span aria-hidden="true">⚙️</span> Calcular costo
+                  </button>
+                  <button type="button" class="btn btn-secondary" id="btn-reset-c"
+                    aria-label="Limpiar formulario de transporte">
+                    <span aria-hidden="true">🔄</span> Limpiar
+                  </button>
+                  <button type="button" class="btn btn-outline" id="btn-caso-c"
+                    aria-label="Cargar caso de estudio del PDF">
+                    <span aria-hidden="true">📋</span> Cargar caso PDF
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- PANEL DE RESULTADOS C -->
+            <div class="sim-results-wrap" aria-live="polite" aria-atomic="false">
+              <div id="resultados-c" class="sim-results">
+                <div class="results-placeholder">
+                  <span aria-hidden="true">🚌</span>
+                  <p>Los resultados del análisis de transporte aparecerán aquí.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CASO DE ESTUDIO C -->
+          <div class="caso-estudio" aria-labelledby="caso-c-label">
+            <h4 id="caso-c-label" class="caso-titulo">
+              <span aria-hidden="true">📋</span> Caso de Estudio (según PDF — Caso 3)
+            </h4>
+            <div class="caso-tabla-wrap">
+              <table class="caso-tabla" aria-label="Datos del caso de estudio 3 del PDF">
+                <caption>Caso de estudio 3: Transporte con desvío</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Dato</th>
+                    <th scope="col">Valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Distancia normal</td>
+                    <td><strong>10 km</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Distancia con desvío</td>
+                    <td><strong>16 km</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Costo por km</td>
+                    <td><strong>Bs 2/km</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Viajes por semana</td>
+                    <td><strong>5 viajes</strong></td>
+                  </tr>
+                  <tr class="resultado-fila">
+                    <td>Resultado esperado</td>
+                    <td><strong>Gasto adicional: Bs 60/semana · Bs 259,80/mes</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="caso-instruccion">
+              Haz clic en <strong>"Cargar caso PDF"</strong> para autocompletar este escenario y verificar el cálculo.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- C4 — CONCLUSIONES DEL MÓDULO C -->
+      <section class="modulo-conclusiones" aria-labelledby="concl-c-titulo">
+        <div class="modulo-inner">
+          <h3 id="concl-c-titulo" class="concl-titulo">
+            <span aria-hidden="true">🔬</span> Conclusiones del Módulo C
+          </h3>
+          <div class="concl-grid">
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">01</span>
+              <h4>El desvío multiplica los costos de manera no proporcional</h4>
+              <p>
+                Un desvío del 60% en distancia (de 10 a 16 km) produce un incremento del 60% en
+                el costo de cada viaje, pero al multiplicarse por la frecuencia semanal y mensual,
+                el impacto financiero anualizado resulta sustancial: Bs 3 117,60 adicionales al año
+                para el caso de estudio del PDF. Este efecto acumulativo transforma lo que parece
+                un sobrecosto puntual en una carga financiera permanente mientras dure la perturbación vial.
+              </p>
+            </div>
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">02</span>
+              <h4>Impacto diferencial sobre distintos sectores económicos</h4>
+              <p>
+                El modelo ilustra que el impacto del desvío es directamente proporcional a la
+                intensidad de uso de la ruta: transportistas de carga con múltiples viajes diarios
+                acumulan pérdidas varias veces superiores a las de un trabajador que realiza un único
+                viaje de ida y vuelta al día. Esta heterogeneidad implica que las políticas de
+                compensación o mitigación deben ser diferenciadas por sector y frecuencia de uso
+                para ser económicamente equitativas.
+              </p>
+            </div>
+            <div class="concl-item">
+              <span class="ci-num" aria-hidden="true">03</span>
+              <h4>El costo social de los bloqueos trasciende lo visible</h4>
+              <p>
+                El simulador calcula el costo directo para un agente individual. Sin embargo,
+                el costo social total de un bloqueo incluye pérdidas productivas, deterioro de
+                mercancías, costos de oportunidad por horas de trabajo perdidas y efectos
+                multiplicadores sobre la actividad económica regional. Estimaciones de organismos
+                internacionales sugieren que el costo social puede ser entre 3 y 10 veces superior
+                al costo de transporte directo, subrayando la importancia de resolver estos
+                conflictos por vías de diálogo institucional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+    <!-- ── FIN MÓDULO C ── -->
+
+
+    <!-- =============================================
+       SECCIÓN: CRÉDITOS DEL PROYECTO
+       ============================================= -->
+    <section id="creditos" aria-labelledby="creditos-titulo">
+      <div class="modulo-inner creditos-inner">
+
+        <div class="section-badge">Autoría</div>
+        <h2 id="creditos-titulo" class="section-title">Créditos del Proyecto</h2>
+
+        <div class="creditos-grid">
+          <div class="credito-card">
+            <div class="credito-icon" aria-hidden="true">👨‍💻</div>
+            <h3>Datos del estudiante</h3>
+            <dl>
+              <dt>Nombre completo:</dt>
+              <dd>[Nombre del Estudiante]</dd>
+              <dt>Materia:</dt>
+              <dd>Programación Web I</dd>
+              <dt>Universidad:</dt>
+              <dd>UMSA — Universidad Mayor de San Andrés</dd>
+              <dt>Gestión:</dt>
+              <dd>2025</dd>
+            </dl>
+          </div>
+
+          <div class="credito-card">
+            <div class="credito-icon" aria-hidden="true">🔗</div>
+            <h3>Entregables</h3>
+            <dl>
+              <dt>Título del proyecto:</dt>
+              <dd>SimCrisis — Simulador Web de Abastecimiento, Precios y Costo de Transporte</dd>
+              <dt>Página publicada:</dt>
+              <dd><a href="https://jesus777justohuan-glitch.github.io/Fnal_Desafio/" class="credito-link"
+                  aria-label="Enlace a la página publicada">[Enlace GitHub Pages /
+                  Netlify]</a></dd>
+              <dt>Repositorio Git:</dt>
+              <dd><a href="https://github.com/jesus777justohuan-glitch/Fnal_Desafio.git" class="credito-link"
+                  aria-label="Enlace al repositorio Git">[Enlace GitHub Repository]</a>
+              </dd>
+            </dl>
+          </div>
+
+          <div class="credito-card">
+            <div class="credito-icon" aria-hidden="true">⚙️</div>
+            <h3>Tecnologías utilizadas</h3>
+            <ul class="tech-list" aria-label="Lista de tecnologías">
+              <li><span class="tech-tag">HTML5 Semántico</span></li>
+              <li><span class="tech-tag">CSS3 · Mobile-First</span></li>
+              <li><span class="tech-tag">JavaScript Vanilla</span></li>
+              <li><span class="tech-tag">DOM API</span></li>
+              <li><span class="tech-tag">Git &amp; GitHub</span></li>
+              <li><span class="tech-tag">GitHub Pages</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+     FOOTER
+     ============================================= -->
+  <footer>
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#top" class="logo" aria-label="Volver al inicio">
+            <div class="logo-icon" aria-hidden="true">⚡</div>
+            <div class="logo-text">SimCrisis</div>
+          </a>
+          <p>
+            Simulador web educativo de abastecimiento, precios y transporte en contexto de crisis.
+            Desarrollado como Desafío Final de Programación Web I — UMSA.
+            Uso educativo y orientativo únicamente.
+          </p>
+        </div>
+
+        <nav class="footer-col" aria-label="Módulos del proyecto">
+          <h4>Módulos</h4>
+          <ul>
+            <li><a href="#modulo-a">A — Carburantes</a></li>
+            <li><a href="#modulo-b">B — Alimentos</a></li>
+            <li><a href="#modulo-c">C — Transporte</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Navegación del sitio">
+          <h4>Sitio</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#creditos">Créditos</a></li>
+            <li><a href="#top">↑ Volver arriba</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © <span id="footer-year">2025</span> SimCrisis · Desafío Final Programación Web I · UMSA ·
+          Desarrollado con HTML5, CSS3 y JavaScript Vanilla puro.
+        </p>
+        <div class="tech-tags-footer" aria-label="Stack tecnológico">
+          <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>DOM</span><span>GitHub Pages</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
