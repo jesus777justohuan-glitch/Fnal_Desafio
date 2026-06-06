@@ -42,6 +42,9 @@ Mide el impacto económico semanal y mensual que sufren los transportistas al ve
 ```text
 ├── index.html          # Documento principal de la aplicación
 ├── css/
-│   └── estilos.css    # Hoja de estilos (Estructura Mobile-First)
-└── js/
-    └── script.js       # Lógica de programación y control del DOM
+│   └── estilos.css     # Hoja de estilos (Estructura Mobile-First)
+├── js/
+│   └── script.js       # Lógica de programación y control del DOM
+└── img/                # Carpeta de recursos visuales y capturas del sistema
+    ├── Gemini_Generated_Image_7c3t9q7c3t9q7c3t.png
+    └── Gemini_Generated_Image_p392spp392spp392.png
